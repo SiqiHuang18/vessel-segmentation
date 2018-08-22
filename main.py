@@ -6,9 +6,11 @@ from job.chase import ChaseJob
 import os
 
 if __name__ == '__main__':
-    EXPERIMENTS_DIR_PATH = "/home/ubuntu/new_vessel_segmentation/vessel-segmentation/experiments"
-    EXPERIMENT_NAME = "drive_example"
+
+    EXPERIMENTS_DIR_PATH = "c:/vessel-segmentation/experiments"
+    EXPERIMENT_NAME = "/drive_example_/"
     job = DriveJob(OUTPUTS_DIR_PATH=os.path.join(EXPERIMENTS_DIR_PATH, EXPERIMENT_NAME))
-    # keyword arguments are passed to several methods, please look at the code to see the flow of key-word arguments
-    job.run_cross_validation(WRK_DIR_PATH="/home/ubuntu/new_vessel_segmentation/vessel-segmentation/drive",metrics_epoch_freq=1,
-                             viz_layer_epoch_freq=1,n_epochs=5)
+    job.run_cross_validation(WRK_DIR_PATH="c:/vessel-segmentation/DRIVE",metrics_epoch_freq=1,
+            viz_layer_epoch_freq=1,n_epochs=5,gpu_device='/gpu:1', weight_init='He',regularizer='L2',Relu=False,
+            learningrate=0.001, Beta1=0.9,Beta2=0.999,epsilon=10**-8)
+
